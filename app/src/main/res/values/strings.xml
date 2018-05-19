@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Kamus Ilmiah</string>
+    <string name="cari_kosa_kata">Cari kosa kata</string>
+    <string name="app_first_run">First Run</string>
+</resources>
