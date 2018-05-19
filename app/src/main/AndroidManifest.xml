@@ -12,8 +12,10 @@
         <activity android:name=".MainActivity">
 
         </activity>
-        <activity android:name=".DetailActivity" />
-        <activity android:name=".GettingStartedActivity">
+        <activity android:name=".DetailActivity"
+            android:label="Detail Istilah Kamus"/>
+        <activity android:name=".GettingStartedActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

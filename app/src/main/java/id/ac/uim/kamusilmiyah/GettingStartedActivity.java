@@ -58,7 +58,7 @@ public class GettingStartedActivity extends AppCompatActivity {
         protected Void doInBackground(Void... params) {
             Boolean firstRun = appsPreference.getFirstRun();
             if (firstRun) {
-                ArrayList<KamusIlmiah> kamusMadura = preLoadRaw(R.raw.english_indonesia);
+                ArrayList<KamusIlmiah> kamusMadura = preLoadRaw(R.raw.kamus_ilmiah_populer);
 
                 publishProgress((int) progress);
 
@@ -120,7 +120,7 @@ public class GettingStartedActivity extends AppCompatActivity {
             String line = null;
             do {
                 line = reader.readLine();
-                String[] splitstr = line.split("\t");
+                String[] splitstr = line.split(" -> ");
                 KamusIlmiah kamusModel;
                 kamusModel = new KamusIlmiah(splitstr[0], splitstr[1]);
                 kamusModels.add(kamusModel);
