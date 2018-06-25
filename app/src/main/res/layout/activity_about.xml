@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="@dimen/activity_horizontal_margin"
-    tools:context=".MainActivity">
+    tools:context=".AboutActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
 
         <ImageView
             android:layout_width="120dp"
@@ -20,26 +19,21 @@
             android:layout_gravity="center"
             android:src="@color/colorPrimary" />
 
-        <Button
-            android:id="@+id/kamus"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
-            android:text="Kamus" />
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:text="@string/app_name"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
-        <Button
-            android:id="@+id/tentang"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tentang" />
-
-        <Button
-            android:id="@+id/keluar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Keluar" />
-
-
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:text="Dikembangkan untuk membantu pengguna yang ingin mencari kosa-kata Ilmiah yang cukup populer."
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
     </LinearLayout>
 
 </RelativeLayout>

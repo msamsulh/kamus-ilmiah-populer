@@ -1,10 +1,13 @@
 package id.ac.uim.kamusilmiyah;
 
+import android.content.Intent;
 import android.database.SQLException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
 
 import com.mancj.materialsearchbar.MaterialSearchBar;
 
@@ -14,14 +17,9 @@ import id.ac.uim.kamusilmiyah.adapter.SearchAdapter;
 import id.ac.uim.kamusilmiyah.data.KamusIlmiah;
 import id.ac.uim.kamusilmiyah.helper.KamusIlmiahHelper;
 
-public class MainActivity extends AppCompatActivity implements MaterialSearchBar.OnSearchActionListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    MaterialSearchBar materialSearchBar;
-    RecyclerView recyclerView;
-    private KamusIlmiahHelper kamusHelper;
-    private SearchAdapter adapter;
-
-    private ArrayList<KamusIlmiah> list = new ArrayList<>();
+    Button kamus, tentang, keluar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,54 +27,30 @@ public class MainActivity extends AppCompatActivity implements MaterialSearchBar
         setContentView(R.layout.activity_main);
         getSupportActionBar().setElevation(0);
 
-        materialSearchBar = findViewById(R.id.search_bar);
-        recyclerView = findViewById(R.id.recycler_view);
+        kamus = findViewById(R.id.kamus);
+        tentang = findViewById(R.id.tentang);
+        keluar = findViewById(R.id.keluar);
 
-        materialSearchBar.setOnSearchActionListener(this);
-        kamusHelper = new KamusIlmiahHelper(this);
+        kamus.setOnClickListener(this);
+        tentang.setOnClickListener(this);
+        keluar.setOnClickListener(this);
 
-        setupList();
-        loadData();
     }
+
 
     @Override
-    public void onSearchStateChanged(boolean enabled) {
-
-    }
-
-    @Override
-    public void onSearchConfirmed(CharSequence text) {
-        loadData(String.valueOf(text));
-    }
-
-    @Override
-    public void onButtonClicked(int buttonCode) {
-
-    }
-
-    private void setupList() {
-        adapter = new SearchAdapter();
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
-    }
-
-    private void loadData(String search) {
-        try {
-            kamusHelper.open();
-            if (search.isEmpty()) {
-                list = kamusHelper.getAllData();
-            } else {
-                list = kamusHelper.getDataByName(search);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            kamusHelper.close();
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case (R.id.kamus):
+                startActivity(new Intent(getApplicationContext(), KamusActivity.class));
+                break;
+            case (R.id.tentang):
+                startActivity(new Intent(getApplicationContext(), AboutActivity.class));
+                break;
+            case (R.id.keluar):
+                finish();
+                break;
         }
-        adapter.replaceAll(list);
-    }
-
-    private void loadData() {
-        loadData("");
     }
 }
+
