@@ -120,7 +120,7 @@ public class GettingStartedActivity extends AppCompatActivity {
             String line = null;
             do {
                 line = reader.readLine();
-                String[] splitstr = line.split(" -> ");
+                String[] splitstr = line.split("->");
                 KamusIlmiah kamusModel;
                 kamusModel = new KamusIlmiah(splitstr[0], splitstr[1]);
                 kamusModels.add(kamusModel);
